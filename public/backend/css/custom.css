@@ -1,0 +1,23 @@
+.bg-color{
+    background-color: rgb(173, 173, 173) !important;
+}
+
+.error-msg{
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    font-style: italic;
+}
+.password-container {
+    position: relative;
+}
+.password-container input {
+    padding-right: 30px;
+}
+.password-container .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
