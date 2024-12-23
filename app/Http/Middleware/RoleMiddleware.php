@@ -11,6 +11,7 @@ class RoleMiddleware {
         // Kiểm tra người dùng đã đăng nhập và có role phù hợp
         if (!Auth::check() || Auth::user()->role !== $role) {
             abort(403, 'Bạn không có quyền truy cập.');
+            return $next($request);
         }
 
         return $next($request);
