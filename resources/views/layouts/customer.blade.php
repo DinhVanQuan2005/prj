@@ -38,11 +38,11 @@
                             Tài khoản
                        </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
-                            <li><a class="dropdown-item" href="#!">Thông tin tài khoản</a></li>
-                            <li><a class="dropdown-item" href="#!">Giỏ hàng của tôi</a></li>
-                            <li><a class="dropdown-item" href="#!">Đơn hàng</a></li>
+                            <li><a class="dropdown-item" href="{{ route('customer.account') }}">Thông tin tài khoản</a></li>
+                            <li><a class="dropdown-item" href="{{ route('customer.cart') }}">Giỏ hàng của tôi</a></li>
+                            <li><a class="dropdown-item" href={{ route('customer.orders') }}">Đơn hàng</a></li>
                             <li><hr class="dropdown-divider" /></li>
-                            <li><a class="dropdown-item" href="{{ route('logout') }}">Đăng xuất</a></li> <-- Thêm đường dẫn đăng xuất -->
+                            <li><a class="dropdown-item" href="{{ route('logout') }}">Đăng xuất</a></li> 
                         </ul>
                      </div>
                  </div>
