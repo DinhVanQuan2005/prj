@@ -69,6 +69,13 @@ class CustomerController extends Controller {
         $cart = Cart::where('idUser', $userId)->get(); // Truy vấn giỏ hàng từ database  
         return view('customer.cart', compact('cart'));
     }
+    public function removeCart($index) {
+    $cart = session()->get('cart', []);
+    unset($cart[$index]);
+    session()->put('cart', $cart);
+
+    return redirect()->route('customer.cart')->with('success', 'Sản phẩm đã được xóa khỏi giỏ hàng.');
+    }
     public function orders()
     {
         $orders = Auth::user()->orders; 
