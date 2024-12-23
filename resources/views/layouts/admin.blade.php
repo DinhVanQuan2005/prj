@@ -23,56 +23,54 @@
                 </button>
                 <-- Nội dung thanh điều hướng -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4"
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        v
-                </div>
                     </ul>
-                    <form class="d-flex me-2" >
-                        <button class="btn btn-outline-dark" type="button" >
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
+                    <-- Thanh tìm kiếm sản phẩm -->
+                    <form class="d-flex me-2">
+                        <input class="form-control me-2" type="search" placeholder="Tìm kiếm sản phẩm" aria-label="Search">
+                        <button class="btn btn-outline-dark" type="submit">Tìm</button>
                     </form>
-
                     <div class="dropdown">
-                        <button class="btn btn-outline-dark dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-people-fill"></i>
+                        <button class="btn btn-outline-dark dropdown-toggle" type="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle"></i>
+                            Tài khoản
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <li><a class="dropdown-item" href="{{route('login')}}">Login</a></li>
-                            <li><a class="dropdown-item" href="#!">Register</a></li>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                            <li><a class="dropdown-item" href="#!">Thông tin tài khoản</a></li>
+                            <li><a class="dropdown-item" href="#!">Đơn hàng</a></li>
                             <li><hr class="dropdown-divider" /></li>
-                            <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
+                            <li><a class="dropdown-item" href="{{ route('logout') }}">Đăng xuất</a></li> <-- Thêm đường dẫn -->
                         </ul>
-                    </div>
-
-                </div>
-            </div>
+                   </div>
+               </div>
+           </div>
         </nav>
 
-        <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Shop GenZ</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Thời trang & Mỹ phẩm</p>
-                </div>
+        <header class="bg-dark py-5 text-center text-white">
+            <div class="container px-4 px-lg-5">
+                <h1 class="display-4 fw-bolder">Grow & Up</h1>
+                <p class="lead fw-normal text-white-50 mb-0">Mang đến vẻ đẹp toàn diện</p>
             </div>
         </header>
 
-        <!-- Section-->
-        @yield('content')
-        <!-- Footer-->
-
+        <main>
+            <div id="bodyContainer">
+                <?php echo $content; ?>
+            </div>
+        </main>
+                        
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2024</p></div>
+            <div class="container text-center text-white">
+                <p>Cảm ơn vì chọn cửa hàng của chúng mình là nơi đặt chân và tìm hiểu để nâng tầm vẻ đẹp của bạn!</p>
+                <p>&copy; 2024 Grow & Up</p>
+            </div>
         </footer>
-        <!-- Bootstrap core JS-->
+                        
+        <!-- Bootstrap <JS> -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="backend/js/scripts.js"></script>
+        <!-- JS chính -->
+        <script src="public/backend/js/scripts.js"></script>
     </body>
 </html>
