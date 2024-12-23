@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DefaultController;
 use App\Http\Middleware\AuthenticateMiddleware;
 use App\Http\Middleware\LoginMiddleware;
 
@@ -18,7 +19,14 @@ use App\Http\Middleware\LoginMiddleware;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home')->middleware(AuthenticateMiddleware::class);
+//Route cho phần "default layout" (không có giỏ hàng)
+Route::group(['middleware' => [AuthenticateMiddleware::class]], function () {
+    // Trang chủ mặc định
+    Route::get('/', [DefaultController::class, 'index'])->name('default.home');
+    // Trang thông tin tài khoản
+    Route::get('/account', [DefaultController::class, 'account'])->name('default.account');
+});
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware(AuthenticateMiddleware::class);
 
 Route::get('/login', function () {
     return view('auth.login');
