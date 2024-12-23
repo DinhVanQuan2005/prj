@@ -48,6 +48,8 @@ Route::prefix('customer')->middleware(['auth', 'role:customer'])->group(function
     Route::post('/account/password', [CustomerController::class, 'changePassword'])->name('customer.password.update');
     //Giỏ hàng của tôi 
     Route::get('/cart', [CustomerController::class, 'cart'])->name('customer.cart');
+    //Xoá giỏ
+    Route::post('/cart/remove/{index}', [CustomerController::class, 'removeCart'])->name('customer.cart.remove');
     // Đơn hàng
     Route::get('/orders', [CustomerController::class, 'orders'])->name('customer.orders');
     // Chi tiết đơn hàng
