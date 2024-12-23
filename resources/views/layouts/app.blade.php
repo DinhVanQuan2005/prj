@@ -64,6 +64,6 @@
         <!-- Bootstrap <JS> -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- JS chính -->
-        <script src="public/backend/js/script.js"></script>
+        <script src="public/backend/js/scripts.js"></script>
     </body>
 </html>
