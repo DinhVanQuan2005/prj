@@ -9,7 +9,7 @@
         <!-- <link rel="icon" type="image/x-icon" href="assets/favicon.ico" /> -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- CSS (cả Bootstrap) ở folder public/backend/-->
-        <link href="public/backend/css/style.css" rel="stylesheet" />
+        <link href="public/backend/css/styles.css" rel="stylesheet" />
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
