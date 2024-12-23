@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DefaultController;
+use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Middleware\AuthenticateMiddleware;
 use App\Http\Middleware\LoginMiddleware;
 
@@ -23,8 +24,6 @@ use App\Http\Middleware\LoginMiddleware;
 Route::group(['middleware' => [AuthenticateMiddleware::class]], function () {
     // Trang chủ mặc định
     Route::get('/', [DefaultController::class, 'index'])->name('default.home');
-    // Trang thông tin tài khoản
-    Route::get('/account', [DefaultController::class, 'account'])->name('default.account');
 });
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware(AuthenticateMiddleware::class);
 
@@ -38,4 +37,20 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('cart.add');
+// Nhóm route dành cho customer
+Route::prefix('customer')->middleware(['auth', 'role:customer'])->group(function () {
+    Route::get('/', [CustomerController::class, 'index'])->name('customer.home');
+    //Thông tin tài khoản
+    Route::get('/account', [CustomerController::class, 'account'])->name('customer.account');
+    Route::get('/account/edit', [CustomerController::class, 'editAccount'])->name('customer.account.edit');
+    Route::post('/account/update', [CustomerController::class, 'updateAccount'])->name('customer.account.update');
+    Route::get('/account/password', [CustomerController::class, 'changePasswordForm'])->name('customer.password.change');
+    Route::post('/account/password', [CustomerController::class, 'changePassword'])->name('customer.password.update');
+    //Giỏ hàng của tôi 
+    Route::get('/cart', [CustomerController::class, 'cart'])->name('customer.cart');
+    // Đơn hàng
+    Route::get('/orders', [CustomerController::class, 'orders'])->name('customer.orders');
+    // Chi tiết đơn hàng
+    Route::get('/orders/{order}', [CustomerController::class, 'orderDetail'])->name('customer.orders.detail');
+});
 
