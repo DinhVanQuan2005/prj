@@ -44,6 +44,7 @@
                             <li><hr class="dropdown-divider" /></li>
                             <li><a class="dropdown-item" href="{{ route('logout') }}">Đăng xuất</a></li> <-- Thêm đường dẫn đăng xuất -->
                         </ul>
+                     </div>
                  </div>
             </div>
         </nav>
