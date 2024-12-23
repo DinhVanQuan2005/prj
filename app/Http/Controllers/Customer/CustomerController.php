@@ -71,9 +71,17 @@ class CustomerController extends Controller {
     }
     public function removeCart($index) {
     $cart = session()->get('cart', []);
-    unset($cart[$index]);
+    if (isset($cart[$index])) {
+        unset($cart[$index]);
+    }
+    // Cập nhật lại giỏ hàng vào session
     session()->put('cart', $cart);
-
+        foreach ($cart as $item) {  
+    // Giả sử bạn có một chỉ định id cho từng sản phẩm trong giỏ hàng  
+    $cartItem = Cart::updateOrCreate(  
+        ['idProduct' => $item['id'], 'idUser' => Auth::id()],  
+        ['quantity' => $item['quantity'], 'price' => $item['price']]  
+    );    
     return redirect()->route('customer.cart')->with('success', 'Sản phẩm đã được xóa khỏi giỏ hàng.');
     }
     public function orders()
